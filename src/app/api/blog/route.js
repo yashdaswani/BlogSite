@@ -6,7 +6,7 @@ export const GET = async () => {
   try {
     connectToDb();
 
-    const posts = await Post.find();
+    const posts = await Post.find().maxTimeMS(30000);
     return NextResponse.json(posts);
   } catch (err) {
     console.log(err);
